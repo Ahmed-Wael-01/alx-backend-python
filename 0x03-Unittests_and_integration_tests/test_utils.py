@@ -20,10 +20,10 @@ class TestAccessNestedMap(unittest.TestCase):
         self.assertEqual(access_nested_map(nested_map, path), res)"""
 
     @parameterized.expand([
-        ({"a": 1}, ("a",), 1),
-        ({"a": {"b": 2}}, ("a",), {'b': 2}),
-        ({"a": {"b": 2}}, ("a", "b"), 2)
+        ("first", {"a": 1}, ("a",), 1),
+        ("second", {"a": {"b": 2}}, ("a",), {'b': 2}),
+        ("third", {"a": {"b": 2}}, ("a", "b"), 2)
     ])
-    def test_access_nested_map(self, nested_map, path, expected):
+    def test_access_nested_map(self, name, nested_map, path, expected):
         """ Test that the method returns what it is supposed to """
         self.assertEqual(access_nested_map(nested_map, path), expected)
